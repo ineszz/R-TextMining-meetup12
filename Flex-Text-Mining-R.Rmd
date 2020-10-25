@@ -1,0 +1,87 @@
+---
+title: "Text mining with R - Instagram Data"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    social: menu
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+`%>%` <- magrittr::`%>%`
+source('01-Exploration.R')
+```
+
+
+Sidebar {.sidebar}
+=====================================
+
+### Contents
+
+### [Text Mining with R Viz]()
+
+Basic viz to start on text analyses
+
+
+Viz-Board {.storyboard}
+=========================================
+### Ora vs Ziua saptamanii
+
+```{r}
+#Hour vs week day view
+gg_datahw
+```
+
+***
+
+Ora 20 este ora la care se inregistreaza cele mai multe like-uri.
+
+### Ora 
+
+```{r}
+#Hour view
+gg_datah
+```
+
+***
+
+Ora 20 este ora la care se inregistreaza cele mai multe posturi.
+
+### Ziua din saptamana 
+
+```{r}
+#Hour view
+gg_dataw
+```
+
+***
+
+Ziua saptamanii care este mai activa din pct de vedere Insta este sambata.
+
+
+### Anul
+
+```{r}
+#Year view
+gg_datay
+```
+
+***
+
+Anul nu este relevant, deoarece nu avem suficiente date.
+
+### WordCloud
+
+```{r}
+# view
+library("RColorBrewer")
+set.seed(1234)
+wordcloud::wordcloud(words = words$word, freq = words$n, min.freq = 100,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+***
+
+Bucharest , Bucuresti si Romania sunt cele mai uzuale cuvinte.
